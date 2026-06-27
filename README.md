@@ -444,7 +444,7 @@ GitHub:
 https://github.com/franklinosuji2-afk
 
 LinkedIn:  
-Add your LinkedIn profile here
+(https://www.linkedin.com/in/franklin-osuji-a96003321/)
 
 ---
 
