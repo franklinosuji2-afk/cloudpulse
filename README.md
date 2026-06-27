@@ -459,7 +459,6 @@ MIT License
 > Great infrastructure should be invisible it just works, allowing engineers to focus on building products rather than fighting systems.
 
 CloudPulse was built to reflect that philosophy.
-````
 
-This README is already strong enough for recruiters.
-One thing would make it **elite**: adding a real architecture diagram image (not ASCII) plus screenshots of terminal output / API responses.
+
+
