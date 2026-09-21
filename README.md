@@ -8,7 +8,7 @@ Built to demonstrate modern **DevOps**, **SRE**, and **Cloud Engineering** pract
 
 ## 🚀 Why CloudPulse?
 
-Modern distributed systems generate massive volumes of telemetry data.  
+Modern distributed systems generate massive volumes of telemetry data.
 The challenge is no longer collecting metrics it is **understanding anomalies fast enough to prevent downtime**.
 
 CloudPulse addresses this by providing:
@@ -26,29 +26,29 @@ This project simulates how modern SRE teams monitor critical workloads such as c
 # 🏗 Architecture
 
 ```text
-                  ┌â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+                  ┌
                   │ Metric Generator   │
                   │ (CPU Usage Stream) │
-                  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
+
                             │
                             â–¼
-                ┌â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+                ┌
                 │ Ingestion Service    │
                 │ FastAPI + SQLAlchemy │
-                â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
+
                           │
                           â–¼
-                 ┌â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+                 ┌
                  │ PostgreSQL DB    │
                  │ Metrics Storage  │
-                 â””â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”˜
+
                         │     │
-              ┌â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜     â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+              ┌
               â–¼                         â–¼
-   ┌â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”       ┌â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+   ┌       ┌
    │ Anomaly Service  │       │ RCA Service     │
    │ Statistical AI   │       │ Event Correlator│
-   â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜       â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
+
 ```
 
 ---
@@ -119,14 +119,14 @@ CloudPulse uses a **rolling window Z-score model**.
 Formula:
 
 ```text
-z = |(x - μ) / Ïƒ|
+z = |(x - μ) / |
 ```
 
 Where:
 
 - **x** = latest metric
 - **μ** = rolling mean
-- **Ïƒ** = standard deviation
+- **** = standard deviation
 
 Severity thresholds:
 
@@ -229,7 +229,7 @@ Example response:
 
 ---
 
-# ðŸ§  Root Cause Correlation Logic
+#  Root Cause Correlation Logic
 
 CloudPulse correlates:
 
@@ -239,16 +239,16 @@ CloudPulse correlates:
 
 Example reasoning:
 
-1. CPU spikes detected  
-2. Deployment event recorded  
-3. Same service affected  
-4. RCA infers deployment as probable cause  
+1. CPU spikes detected
+2. Deployment event recorded
+3. Same service affected
+4. RCA infers deployment as probable cause
 
 This mimics real-world incident response workflows.
 
 ---
 
-# ðŸ›  Tech Stack
+#  Tech Stack
 
 | Category | Technology |
 |----------|------------|
@@ -262,7 +262,7 @@ This mimics real-world incident response workflows.
 
 ---
 
-# ðŸ“¦ Installation
+#  Installation
 
 ## Clone Repository
 
@@ -387,7 +387,7 @@ Example:
 
 ---
 
-# ðŸ”¥ Key Engineering Concepts Demonstrated
+#  Key Engineering Concepts Demonstrated
 
 - Microservice architecture
 - Event-driven design
@@ -415,7 +415,7 @@ Planned upgrades:
 
 ---
 
-# ðŸ’¡ Use Cases
+#  Use Cases
 
 CloudPulse can simulate monitoring for:
 
@@ -438,15 +438,15 @@ AWS-Certified Cloud & DevOps Engineer focused on:
 - Reliability Engineering
 - Scalable Production Systems
 
-GitHub:  
+GitHub:
 https://github.com/franklinosuji2-afk
 
-LinkedIn:  
+LinkedIn:
 (https://www.linkedin.com/in/franklin-osuji-a96003321/)
 
 ---
 
-# ðŸ“„ License
+#  License
 
 MIT License
 
@@ -458,9 +458,6 @@ MIT License
 
 CloudPulse was built to reflect that philosophy.
 
-
-
-
 ## Continuous Integration
 
 GitHub Actions validates the Python services and Docker Compose configuration on pushes and pull requests.
@@ -470,4 +467,3 @@ The CI pipeline performs:
 - Python bytecode compilation
 - Docker Compose configuration validation
 - Reproducible automated checks
-
