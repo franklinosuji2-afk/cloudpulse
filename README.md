@@ -1,4 +1,4 @@
-﻿# CloudPulse Intelligent Observability Platform
+# CloudPulse Intelligent Observability Platform
 
 CloudPulse is a microservices-based observability platform that simulates **real-time metric ingestion**, **anomaly detection**, and **root cause analysis (RCA)** for distributed cloud systems.
 
@@ -105,8 +105,6 @@ GET /metrics
 ```
 
 Returns stored metrics.
-
----
 
 ---
 
@@ -404,7 +402,9 @@ Example:
 
 # ðŸš§ Future Improvements
 
-Planned upgrades:`r`n`r`n- Prometheus integration
+Planned upgrades:
+
+- Prometheus integration
 - Grafana dashboards
 - Kubernetes deployment
 - Kafka event streaming
