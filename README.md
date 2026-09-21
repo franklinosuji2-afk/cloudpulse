@@ -1,4 +1,4 @@
-# CloudPulse Intelligent Observability Platform
+﻿# CloudPulse Intelligent Observability Platform
 
 CloudPulse is a microservices-based observability platform that simulates **real-time metric ingestion**, **anomaly detection**, and **root cause analysis (RCA)** for distributed cloud systems.
 
@@ -6,7 +6,7 @@ Built to demonstrate modern **DevOps**, **SRE**, and **Cloud Engineering** pract
 
 ---
 
-## 🚀 Why CloudPulse?
+## ðŸš€ Why CloudPulse?
 
 Modern distributed systems generate massive volumes of telemetry data.  
 The challenge is no longer collecting metrics it is **understanding anomalies fast enough to prevent downtime**.
@@ -23,37 +23,37 @@ This project simulates how modern SRE teams monitor critical workloads such as c
 
 ---
 
-# 🏗 Architecture
+# ðŸ— Architecture
 
 ```text
-                  ┌────────────────────┐
-                  │ Metric Generator   │
-                  │ (CPU Usage Stream) │
-                  └─────────┬──────────┘
-                            │
-                            ▼
-                ┌──────────────────────┐
-                │ Ingestion Service    │
-                │ FastAPI + SQLAlchemy │
-                └─────────┬────────────┘
-                          │
-                          ▼
-                 ┌──────────────────┐
-                 │ PostgreSQL DB    │
-                 │ Metrics Storage  │
-                 └──────┬─────┬─────┘
-                        │     │
-              ┌─────────┘     └─────────┐
-              ▼                         ▼
-   ┌──────────────────┐       ┌─────────────────┐
-   │ Anomaly Service  │       │ RCA Service     │
-   │ Statistical AI   │       │ Event Correlator│
-   └──────────────────┘       └─────────────────┘
+                  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+                  â”‚ Metric Generator   â”‚
+                  â”‚ (CPU Usage Stream) â”‚
+                  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
+                            â”‚
+                            â–¼
+                â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+                â”‚ Ingestion Service    â”‚
+                â”‚ FastAPI + SQLAlchemy â”‚
+                â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
+                          â”‚
+                          â–¼
+                 â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+                 â”‚ PostgreSQL DB    â”‚
+                 â”‚ Metrics Storage  â”‚
+                 â””â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”˜
+                        â”‚     â”‚
+              â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜     â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+              â–¼                         â–¼
+   â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”       â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+   â”‚ Anomaly Service  â”‚       â”‚ RCA Service     â”‚
+   â”‚ Statistical AI   â”‚       â”‚ Event Correlatorâ”‚
+   â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜       â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 ```
 
 ---
 
-# ⚙️ Services
+# âš™ï¸ Services
 
 ## 1. Ingestion Service
 
@@ -121,21 +121,21 @@ CloudPulse uses a **rolling window Z-score model**.
 Formula:
 
 ```text
-z = |(x - μ) / σ|
+z = |(x - Î¼) / Ïƒ|
 ```
 
 Where:
 
 - **x** = latest metric
-- **μ** = rolling mean
-- **σ** = standard deviation
+- **Î¼** = rolling mean
+- **Ïƒ** = standard deviation
 
 Severity thresholds:
 
 | Z-Score | Severity |
 |---------|----------|
 | < 2     | Normal   |
-| 2–3     | Warning  |
+| 2â€“3     | Warning  |
 | > 3     | Critical |
 
 ---
@@ -231,7 +231,7 @@ Example response:
 
 ---
 
-# 🧠 Root Cause Correlation Logic
+# ðŸ§  Root Cause Correlation Logic
 
 CloudPulse correlates:
 
@@ -250,7 +250,7 @@ This mimics real-world incident response workflows.
 
 ---
 
-# 🛠 Tech Stack
+# ðŸ›  Tech Stack
 
 | Category | Technology |
 |----------|------------|
@@ -264,7 +264,7 @@ This mimics real-world incident response workflows.
 
 ---
 
-# 📦 Installation
+# ðŸ“¦ Installation
 
 ## Clone Repository
 
@@ -308,7 +308,7 @@ docker ps
 
 ---
 
-# ▶ Running Services
+# â–¶ Running Services
 
 ## Ingestion Service
 
@@ -334,7 +334,7 @@ python -m uvicorn services.rca_service.app:app --port 8002
 
 ---
 
-# 🧪 Demo Workflow
+# ðŸ§ª Demo Workflow
 
 ### Step 1 - Generate Metrics
 
@@ -389,7 +389,7 @@ Example:
 
 ---
 
-# 🔥 Key Engineering Concepts Demonstrated
+# ðŸ”¥ Key Engineering Concepts Demonstrated
 
 - Microservice architecture
 - Event-driven design
@@ -402,22 +402,20 @@ Example:
 
 ---
 
-# 🚧 Future Improvements
+# ðŸš§ Future Improvements
 
-Planned upgrades:
-
-- Prometheus integration
+Planned upgrades:`r`n`r`n- Prometheus integration
 - Grafana dashboards
 - Kubernetes deployment
 - Kafka event streaming
 - Machine learning anomaly detection
 - Slack / PagerDuty alerting
-- CI/CD pipeline
+- Continuous Integration
 - Terraform infrastructure provisioning
 
 ---
 
-# 💡 Use Cases
+# ðŸ’¡ Use Cases
 
 CloudPulse can simulate monitoring for:
 
@@ -429,7 +427,7 @@ CloudPulse can simulate monitoring for:
 
 ---
 
-# 👨‍💻 Author
+# ðŸ‘¨â€ðŸ’» Author
 
 ## Franklin Chinonso Osuji
 
@@ -448,7 +446,7 @@ LinkedIn:
 
 ---
 
-# 📄 License
+# ðŸ“„ License
 
 MIT License
 
@@ -461,4 +459,15 @@ MIT License
 CloudPulse was built to reflect that philosophy.
 
 
+
+
+## Continuous Integration
+
+GitHub Actions validates the Python services and Docker Compose configuration on pushes and pull requests.
+
+The CI pipeline performs:
+
+- Python bytecode compilation
+- Docker Compose configuration validation
+- Reproducible automated checks
 
