@@ -6,7 +6,7 @@ Built to demonstrate modern **DevOps**, **SRE**, and **Cloud Engineering** pract
 
 ---
 
-## ðŸš€ Why CloudPulse?
+## 🚀 Why CloudPulse?
 
 Modern distributed systems generate massive volumes of telemetry data.  
 The challenge is no longer collecting metrics it is **understanding anomalies fast enough to prevent downtime**.
@@ -23,31 +23,31 @@ This project simulates how modern SRE teams monitor critical workloads such as c
 
 ---
 
-# ðŸ— Architecture
+# 🏗 Architecture
 
 ```text
-                  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
-                  â”‚ Metric Generator   â”‚
-                  â”‚ (CPU Usage Stream) â”‚
+                  ┌â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+                  │ Metric Generator   │
+                  │ (CPU Usage Stream) │
                   â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
-                            â”‚
+                            │
                             â–¼
-                â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
-                â”‚ Ingestion Service    â”‚
-                â”‚ FastAPI + SQLAlchemy â”‚
+                ┌â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+                │ Ingestion Service    │
+                │ FastAPI + SQLAlchemy │
                 â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
-                          â”‚
+                          │
                           â–¼
-                 â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
-                 â”‚ PostgreSQL DB    â”‚
-                 â”‚ Metrics Storage  â”‚
+                 ┌â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+                 │ PostgreSQL DB    │
+                 │ Metrics Storage  │
                  â””â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”˜
-                        â”‚     â”‚
-              â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜     â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+                        │     │
+              ┌â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜     â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
               â–¼                         â–¼
-   â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”       â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
-   â”‚ Anomaly Service  â”‚       â”‚ RCA Service     â”‚
-   â”‚ Statistical AI   â”‚       â”‚ Event Correlatorâ”‚
+   ┌â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”       ┌â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+   │ Anomaly Service  │       │ RCA Service     │
+   │ Statistical AI   │       │ Event Correlator│
    â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜       â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 ```
 
@@ -119,13 +119,13 @@ CloudPulse uses a **rolling window Z-score model**.
 Formula:
 
 ```text
-z = |(x - Î¼) / Ïƒ|
+z = |(x - μ) / Ïƒ|
 ```
 
 Where:
 
 - **x** = latest metric
-- **Î¼** = rolling mean
+- **μ** = rolling mean
 - **Ïƒ** = standard deviation
 
 Severity thresholds:
@@ -332,7 +332,7 @@ python -m uvicorn services.rca_service.app:app --port 8002
 
 ---
 
-# ðŸ§ª Demo Workflow
+# 🧪 Demo Workflow
 
 ### Step 1 - Generate Metrics
 
@@ -400,7 +400,7 @@ Example:
 
 ---
 
-# ðŸš§ Future Improvements
+# 🚧 Future Improvements
 
 Planned upgrades:
 
@@ -427,7 +427,7 @@ CloudPulse can simulate monitoring for:
 
 ---
 
-# ðŸ‘¨â€ðŸ’» Author
+# 👨‍💻 Author
 
 ## Franklin Chinonso Osuji
 
