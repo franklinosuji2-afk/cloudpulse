@@ -1,469 +1,81 @@
-# CloudPulse Intelligent Observability Platform
+# CloudPulse
 
-CloudPulse is a microservices-based observability platform that simulates **real-time metric ingestion**, **anomaly detection**, and **root cause analysis (RCA)** for distributed cloud systems.
+CloudPulse is a local-first cloud observability and FinOps platform for collecting infrastructure telemetry, detecting anomalies, analyzing operational events, and exposing metrics through containerized Python services.
 
-Built to demonstrate modern **DevOps**, **SRE**, and **Cloud Engineering** practices, CloudPulse helps identify abnormal system behavior and correlate incidents with operational events such as deployments or traffic spikes.
+## Architecture
 
----
+CloudPulse is composed of independent services:
 
-## 🚀 Why CloudPulse?
+- Ingestion Service - receives infrastructure telemetry and events.
+- Anomaly Service - detects statistical anomalies.
+- RCA Service - performs root-cause analysis workflows.
+- FinOps Service - analyzes infrastructure cost data.
+- API Gateway - provides HTTP endpoints for the platform.
+- AI Service - supports AI-assisted operational analysis.
 
-Modern distributed systems generate massive volumes of telemetry data.
-The challenge is no longer collecting metrics it is **understanding anomalies fast enough to prevent downtime**.
+## Technology Stack
 
-CloudPulse addresses this by providing:
-
-- **Real-time metric collection**
-- **Statistical anomaly detection**
-- **Root cause correlation**
-- **Event-driven incident analysis**
-- **Production-style microservice architecture**
-
-This project simulates how modern SRE teams monitor critical workloads such as checkout systems, payment APIs, and customer-facing services.
-
----
-
-# 🏗 Architecture
-
-```text
-                  ┌
-                  │ Metric Generator   │
-                  │ (CPU Usage Stream) │
-
-                            │
-                            â–¼
-                ┌
-                │ Ingestion Service    │
-                │ FastAPI + SQLAlchemy │
-
-                          │
-                          â–¼
-                 ┌
-                 │ PostgreSQL DB    │
-                 │ Metrics Storage  │
-
-                        │     │
-              ┌
-              â–¼                         â–¼
-   ┌       ┌
-   │ Anomaly Service  │       │ RCA Service     │
-   │ Statistical AI   │       │ Event Correlator│
-
-```
-
----
-
-# âš™ï¸ Services
-
-## 1. Ingestion Service
-
-Responsible for collecting and storing telemetry data.
-
-### Responsibilities
-- Generate CPU usage metrics
-- Persist metrics to PostgreSQL
-- Expose collected metrics via REST API
-
-### Endpoints
-
-#### Health Check
-```bash
-GET /
-```
-
-Response:
-
-```json
-{
-  "service": "ingestion-service",
-  "status": "healthy"
-}
-```
-
----
-
-#### Collect Metric
-```bash
-POST /collect
-```
-
-Stores a simulated CPU metric.
-
-Response:
-
-```json
-{
-  "status": "metric stored"
-}
-```
-
----
-
-#### Fetch Metrics
-```bash
-GET /metrics
-```
-
-Returns stored metrics.
-
----
-
-## 2. Anomaly Detection Service
-
-Performs statistical analysis on recent telemetry.
-
-### Detection Algorithm
-
-CloudPulse uses a **rolling window Z-score model**.
-
-Formula:
-
-```text
-z = |(x - μ) / |
-```
-
-Where:
-
-- **x** = latest metric
-- **μ** = rolling mean
-- **** = standard deviation
-
-Severity thresholds:
-
-| Z-Score | Severity |
-|---------|----------|
-| < 2     | Normal   |
-| 2â€“3     | Warning  |
-| > 3     | Critical |
-
----
-
-### Endpoints
-
-#### Health Check
-```bash
-GET /
-```
-
-#### Detect Anomalies
-```bash
-GET /detect
-```
-
-Example:
-
-```json
-{
-  "latest_value": 243.4,
-  "mean_window": 53.8,
-  "std_dev": 15.4,
-  "z_score": 12.3,
-  "severity": "critical"
-}
-```
-
-When an anomaly is detected, an event is sent to the RCA service.
-
----
-
-## 3. RCA Service (Root Cause Analysis)
-
-Correlates anomalies with operational events.
-
-### Supported Events
-
-- Deployment
-- Traffic Spike
-- Manual Incident Marker
-- Anomaly Detection Trigger
-
-### Endpoints
-
-#### Health Check
-```bash
-GET /
-```
-
-Response:
-
-```json
-{
-  "service": "rca-service"
-}
-```
-
----
-
-#### Record Event
-```bash
-POST /event?event_type=traffic_spike&service=checkout-service
-```
-
-Response:
-
-```json
-{
-  "status": "event recorded"
-}
-```
-
----
-
-#### Analyze Incident
-```bash
-GET /analyze
-```
-
-Example response:
-
-```json
-{
-  "root_cause": "checkout-service deployment",
-  "confidence": 1.0,
-  "evidence": [
-    "service match",
-    "deployment event"
-  ]
-}
-```
-
----
-
-#  Root Cause Correlation Logic
-
-CloudPulse correlates:
-
-- Recent anomalies
-- Service-level events
-- Operational changes
-
-Example reasoning:
-
-1. CPU spikes detected
-2. Deployment event recorded
-3. Same service affected
-4. RCA infers deployment as probable cause
-
-This mimics real-world incident response workflows.
-
----
-
-#  Tech Stack
-
-| Category | Technology |
-|----------|------------|
-| Backend | Python |
-| API Framework | FastAPI |
-| Database | PostgreSQL |
-| ORM | SQLAlchemy |
-| Containerization | Docker |
-| API Server | Uvicorn |
-| Detection Logic | Statistical Z-score |
-
----
-
-#  Installation
-
-## Clone Repository
-
-```bash
-git clone https://github.com/franklinosuji2-afk/cloudpulse.git
-cd cloudpulse
-```
-
----
-
-## Create Virtual Environment
-
-### Windows
-
-```powershell
-python -m venv venv
-.\venv\Scripts\Activate.ps1
-```
-
----
-
-## Install Dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
----
-
-## Start PostgreSQL
-
-```bash
-docker compose up -d
-```
-
-Verify:
-
-```bash
-docker ps
-```
-
----
-
-# â–¶ Running Services
-
-## Ingestion Service
-
-```bash
-python -m uvicorn services.ingestion_service.app:app --port 8000
-```
-
----
-
-## Anomaly Service
-
-```bash
-python -m uvicorn services.anomaly_service.app:app --port 8001
-```
-
----
-
-## RCA Service
-
-```bash
-python -m uvicorn services.rca_service.app:app --port 8002
-```
-
----
-
-# 🧪 Demo Workflow
-
-### Step 1 - Generate Metrics
-
-```powershell
-1..30 | ForEach-Object {
-    Invoke-RestMethod -Method POST http://127.0.0.1:8000/collect
-}
-```
-
----
-
-### Step 2 - Detect Anomaly
-
-```powershell
-Invoke-RestMethod http://127.0.0.1:8001/detect
-```
-
-Example:
-
-```json
-{
-  "severity": "critical",
-  "z_score": 8.14
-}
-```
-
----
-
-### Step 3 - Record Event
-
-```powershell
-Invoke-RestMethod -Method POST `
--Uri "http://127.0.0.1:8002/event?event_type=traffic_spike&service=checkout-service"
-```
-
----
-
-### Step 4 - Run RCA
-
-```powershell
-Invoke-RestMethod http://127.0.0.1:8002/analyze
-```
-
-Example:
-
-```json
-{
-  "root_cause": "checkout-service traffic spike",
-  "confidence": 0.85
-}
-```
-
----
-
-#  Key Engineering Concepts Demonstrated
-
-- Microservice architecture
-- Event-driven design
+- Python
+- FastAPI
+- Docker
+- Docker Compose
+- PostgreSQL
+- Prometheus-compatible metrics
 - Statistical anomaly detection
-- Incident correlation
-- Observability pipelines
-- Production-like service isolation
-- API-first architecture
-- Failure resilience
+- AI-assisted analysis
 
----
+## Anomaly Detection
 
-# 🚧 Future Improvements
+CloudPulse uses a standardized score for basic anomaly detection:
 
-Planned upgrades:
+    z = |(x - mean) / standard_deviation|
 
-- Prometheus integration
-- Grafana dashboards
-- Kubernetes deployment
-- Kafka event streaming
-- Machine learning anomaly detection
-- Slack / PagerDuty alerting
-- Continuous Integration
-- Terraform infrastructure provisioning
+Higher absolute z-scores indicate observations that differ more strongly from the historical baseline.
 
----
+## API Endpoints
 
-#  Use Cases
+| Endpoint | Purpose |
+|---|---|
+| `/` | Service health and information |
+| `/collect` | Collect telemetry |
+| `/metrics` | Expose metrics |
+| `/detect` | Run anomaly detection |
+| `/event` | Submit an operational event |
+| `/analyze` | Run analysis |
 
-CloudPulse can simulate monitoring for:
+## Project Structure
 
-- E-commerce checkout systems
-- Payment gateways
-- SaaS platforms
-- Banking transaction services
-- Cloud-native applications
+```text
+cloudpulse/
+|-- services/
+|   |-- ai_service/
+|   |-- anomaly_service/
+|   |-- api_gateway/
+|   |-- finops_service/
+|   |-- ingestion_service/
+|   `-- rca_service/
+|-- docs/
+|-- docker-compose.yml
+|-- Makefile
+`-- requirements.txt
+Run Locally
+docker compose up --build
 
----
+Validate the Compose configuration:
 
-# 👨‍💻 Author
+docker compose config
 
-## Franklin Chinonso Osuji
+The project is designed for local development and experimentation without requiring a paid cloud environment.
 
-AWS-Certified Cloud & DevOps Engineer focused on:
+CI
 
-- Cloud Infrastructure
-- Automation
-- Reliability Engineering
-- Scalable Production Systems
+GitHub Actions validates the Python services and Docker Compose configuration on pushes and pull requests to main.
 
-GitHub:
-https://github.com/franklinosuji2-afk
+Author
 
-LinkedIn:
-(https://www.linkedin.com/in/franklin-osuji-a96003321/)
+Franklin Osuji
 
----
+Cloud Infrastructure and DevOps Engineer
 
-#  License
-
-MIT License
-
----
-
-## Final Thought
-
-> Great infrastructure should be invisible it just works, allowing engineers to focus on building products rather than fighting systems.
-
-CloudPulse was built to reflect that philosophy.
-
-## Continuous Integration
-
-GitHub Actions validates the Python services and Docker Compose configuration on pushes and pull requests.
-
-The CI pipeline performs:
-
-- Python bytecode compilation
-- Docker Compose configuration validation
-- Reproducible automated checks
+GitHub: https://github.com/franklinosuji2-afk
+Portfolio: https://fc-dev.netlify.app/
